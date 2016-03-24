@@ -1,2 +1,2 @@
 # CityMap
-City map using Yandex Maps API
+Map city guide using Yandex Maps API
