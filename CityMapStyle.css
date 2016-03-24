@@ -1,0 +1,46 @@
+#cityMap{
+    width: auto;
+    height: 608px;
+}
+.no-gutter > [class*='col-'] {
+    padding-right:0px;
+    padding-left:3px;
+    padding-top: 0px;
+    position: inherit;
+}
+.btnInformer{
+    position: absolute;
+    padding-left:5px;
+    padding-bottom: 5px;
+    left: 0;
+    bottom: 0;
+}
+.navbar{
+    padding-top: 0px;
+    margin-bottom: 1px;
+    margin-left: -70px;
+}
+.navbar-static-top {
+    height: 8px;
+}
+#weatherInformer{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+#free {
+    color: green;
+}
+#busy{
+    color: red;
+}
+#radius {
+    border: 1px solid #B0C4DE;
+    padding: 5px;
+    margin-bottom: 5px;
+    margin-top: 0px;
+}
+#alert {
+    text-align: left;
+    margin-top: 10px;
+    margin-bottom: 0px;
+}

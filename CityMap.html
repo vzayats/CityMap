@@ -1,0 +1,327 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="windows-1251" >
+    <title>Електронний путівник Львова</title>
+    <!-- Підключення Bootstrap-->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="//yandex.st/jquery/1.9.0/jquery.js"></script>
+    <!-- Підключення яндекс map api-->
+    <script src="https://api-maps.yandex.ru/2.1/?lang=uk_UA& LOAD=package.full" type="text/javascript"></script>
+    <script type="text/javascript" src="geoObjects.js"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="CityMapStyle.css">
+</head>
+<body>
+<!--Заговолок вікна -->
+<div class="navbar navbar-default navbar-static-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" rel="home" href="#" title="Електронний путівник міста Львова">
+                <img style="max-width:35px; margin-top: -10px; margin-left: -40px;"
+                     src="Логотип_Львів.png">
+            </a>
+            <a class="navbar-brand" href="#">Електронний путівник міста Львова</a>
+        </div>
+    </div>
+</div>
+<!--Меню вибору -->
+<div class="container-fluid">
+    <div class="row no-gutter">
+        <div class="col-sm-2"><div class="panel-group" id="accordion">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseOne">
+                            Вокзали
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse in">
+                    <div class="panel-body">
+                        <div class="checkbox">
+                            <label><input data-toggle="toggle" type="checkbox" value="" id="railStations">Залізничні станції</label>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="" id="busStations">Автостанції</label>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="" id="airport">Аеропорт</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseTwo">
+                            Культура
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="" id="theaters">Театри</label>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="" id="museums">Музеї</label>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="" id="artGalleries">Виставкові центри</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseThree">
+                           Заклади харчування
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="" id="restaurants">Ресторани</label>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="" id="cafe">Кафе</label>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="" id="pizzeria">Піцерії</label>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="" id="diningRoom">Їдальні</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseFour">
+                            Освіта
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseFour" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="" id="university">ВНЗ</label>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="" id="colleges">Коледжі</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel panel-warning">
+                <div class="panel-heading">
+                    <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion"
+                           href="#collapseFive">
+                            Автостоянки
+                        </a>
+                    </h4>
+                </div>
+                <div id="collapseFive" class="panel-collapse collapse">
+                    <div class="panel-body">
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="" id="parkingLots">Автопаркінги</label>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="" id="autoparking">Стоянки</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="btnInformer">
+         <button type="button" class="btn btn-info btn-md" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-cloud"></span> Погода</button>
+    </div>
+            <!-- Модальне вікно з погодним інформером -->
+            <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal-dialog">
+                    <!-- Контент вікна-->
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" >&times;</button>
+                            <h4 class="modal-title">Погода у Львові</h4>
+                        </div>
+                        <!--Інформер -->
+                        <div class="modal-body" id="weatherInformer">
+                            <p align="center"><div id="opogodeInformer"><a target="_blank" href="http://opogode.ua?utm_source=informer&utm_medium=external-informer-traffic&utm_campaign=partners">Погода</a></div>
+                            <link media="screen" rel="stylesheet" type="text/css" href="http://opogode.ua/stylesheets/informer.css" />
+                            <script type="text/javascript">
+                                var opogodeInformerConfigs = opogodeInformerConfigs || [];
+                                opogodeInformerConfigs.push(['opogode.ua', {"type":"new","link":"lviv","width":350,"color":"51adde","locale":"ua","roundedCorners":true,"showNews":true,"day":"today","additionalLinks":[]}]);
+                                (function() {
+                                    var oi = document.createElement('script');
+                                    oi.type = 'text/javascript'; oi.async = true;
+                                    oi.src = 'http://opogode.ua/javascripts/informers.js';
+                                    var s = document.getElementsByTagName('script')[0];
+                                    s.parentNode.insertBefore(oi, s);
+                                })();
+                            </script>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Закрити</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!--Модальне вікно бронювання -->
+            <div class="modal fade" id="newModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">Бронювання паркувального місця</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form id="signupForm" method="post" class="form-horizontal">
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label">Дата паркування</label>
+                                    <div class="col-xs-4">
+                                        <div class="input-group">
+                                            <div class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></div>
+                                        <input type="text" class="form-control" name="date" placeholder="ДД/ММ/РРРР" />
+                                            </div>
+                                    </div>
+                                </div>
+
+                                    <div class="form-group">
+                                        <label class="col-xs-3 control-label">Тривалість паркування</label>
+                                        <div class="col-xs-4">
+                                            <div class="input-group">
+                                                <div class="input-group-addon"><span class="glyphicon glyphicon-time"></span></div>
+                                                <input type="text" class="form-control" name="time" placeholder="К-сть годин"/>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label">Ініціали водія</label>
+                                    <div class="col-xs-4">
+                                        <div class="input-group">
+                                            <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+                                        <input type="text" class="form-control" name="firstName" placeholder="Ім'я" />
+                                    </div>
+                                        </div>
+                                    <div class="col-xs-4">
+                                        <div class="input-group">
+                                            <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+                                        <input type="text" class="form-control" name="lastName" placeholder="Прізвище" />
+                                            </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label">Моб. телефон</label>
+                                    <div class="col-xs-5">
+                                        <div class="input-group">
+                                            <div class="input-group-addon"><span class="glyphicon glyphicon-phone"></span></div>
+                                        <input type="text" class="form-control" name="mobilePhone" />
+                                    </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label">Email</label>
+                                    <div class="col-xs-5">
+                                        <div class="input-group">
+                                            <div class="input-group-addon"><span class="glyphicon glyphicon-envelope"></span></div>
+                                        <input type="text" class="form-control" name="email" />
+                                    </div>
+                                </div>
+                                    </div>
+
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label">Марка авто</label>
+                                    <div class="col-xs-5">
+                                        <input type="text" class="form-control" name="nameAuto" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label">Модель авто</label>
+                                    <div class="col-xs-5">
+                                        <input type="text" class="form-control" name="modelAuto" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-xs-3 control-label">Державний номер</label>
+                                    <div class="col-xs-5">
+                                        <div class="input-group">
+                                            <div class="input-group-addon"><span class="glyphicon glyphicon-road"></span></div>
+                                        <input type="text" class="form-control" name="modelAuto" placeholder="ВС1111АА"/>
+                                    </div>
+                                </div>
+                                    </div>
+                                </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Закрити</button>
+                            <button type="button" class="btn btn-success" id="success"><span class="glyphicon glyphicon-shopping-cart"></span> Забронювати</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Повідомлення про успішне бронювання -->
+            <script type="text/javascript">
+                $("#success").click(function() {
+                    $(this).after(
+                            '<div class="alert alert-success fade in" id="alert">'+
+                            ' <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>' +
+                            ' <h4><span class="glyphicon glyphicon-ok"></span> Вітаємо!</h4>' +
+                                '<p>Ви успішно забронювали місце для Вашого авто! Чекаємо на Вас!</p>' +
+                            '</div>');
+                });
+            </script>
+
+            <!--Згортання меню -->
+            <script type="text/javascript">
+                $(function () { $('#collapseTwo').collapse('shown')});
+                $(function () { $('#collapseTwo').collapse('shown')});
+                $(function () { $('#collapseThree').collapse('shown')});
+                $(function () { $('#collapseOne').collapse('shown')});
+                $(function () { $('#collapseFive').collapse('shown')});
+            </script>
+        </div>
+        <div class="col-sm-10">
+            <!-- Показуємо карту користувачу-->
+            <div id="cityMap"></div>
+        </div>
+        </div>
+</div>
+</body>
+</html>
