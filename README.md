@@ -1,2 +1,2 @@
 # CityMap
-Map city guide using Yandex Maps API
+Lviv City Guide using Yandex Maps API
